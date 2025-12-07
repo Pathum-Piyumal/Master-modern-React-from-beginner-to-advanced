@@ -187,3 +187,50 @@ console.log(restBooks.length);
 
 const [, , , , { title: lastBookTitle }] = getBooks();
 console.log(lastBookTitle);
+
+//Rest/spread operator
+const { id, ...bookDetails } = getBook(1);
+console.log(id);
+console.log(bookDetails);
+
+const { reviews, ...bookInfo } = getBook(4);
+console.log(bookInfo);
+console.log(reviews);
+
+const genresArray = [
+  "fiction",
+  "adventure",
+  "fantasy",
+  "science fiction",
+  "horror",
+];
+const [genre1, genre2, ...otherGenres] = genresArray;
+console.log(genre1);
+console.log(genre2);
+console.log(otherGenres);
+
+function getBookDetails({ title, author, ...details }) {
+  return `${title} by ${author}. Other details: ${JSON.stringify(details)}`;
+}
+
+console.log(getBookDetails(getBook(2)));
+
+const bookA = getBook(2);
+const bookB = getBook(3);
+
+const combinedBook = { ...bookA, ...bookB, id: 6 };
+console.log(combinedBook);
+
+const updatedBook = {
+  ...getBook(5),
+  pages: 900,
+  hasMovieAdaptation: false,
+};
+console.log(updatedBook);
+
+const additionalGenres = ["epic fantasy", "political fiction"];
+const bookWithMoreGenres = {
+  ...getBook(1),
+  genres: [...getBook(1).genres, ...additionalGenres],
+};
+console.log(bookWithMoreGenres);
