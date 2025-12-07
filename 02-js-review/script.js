@@ -142,3 +142,48 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+//destructing
+const book = getBook(1);
+book;
+// const title = book.title;
+// const author = book.author;
+// console.log(author, title);
+
+//object destructing
+const { title, author, pages, publicationDates, genres } = getBook(2);
+console.log(title, author, genres);
+
+const [firstGenre, secondGenre] = genres;
+console.log(firstGenre, secondGenre);
+
+//nested object destructing
+const {
+  reviews: {
+    goodreads: { rating, ratingsCount },
+  },
+} = getBook(4);
+console.log(rating, ratingsCount);
+
+//function parameter destructing
+function getSummary({ title, author, pages }) {
+  return `${title} by ${author} has ${pages} pages.`;
+}
+
+console.log(getSummary(getBook(3)));
+
+function getGenreAndPages({ genres, pages }) {
+  const [first, second] = genres;
+  return `The book has ${pages} pages and belongs to the following genres: ${first}, ${second}.`;
+}
+
+console.log(getGenreAndPages(getBook(5)));
+
+//array of objects destructing
+const [book1, book2, ...restBooks] = getBooks();
+console.log(book1.title);
+console.log(book2.title);
+console.log(restBooks.length);
+
+const [, , , , { title: lastBookTitle }] = getBooks();
+console.log(lastBookTitle);
