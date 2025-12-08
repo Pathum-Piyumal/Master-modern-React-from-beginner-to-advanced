@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,7 +49,7 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -57,20 +58,36 @@ function App() {
 }
 
 function Header() {
-  const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
-  return <h1 style={style}>Fast React Pizza Co.</h1>;
+  //const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+  const style = {};
+
+  return (
+    <header className="header">
+      <h1 style={style}>Fast React Pizza Co.</h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Margherita"
+        ingredient="Tomato and mozzarella"
+        photoName="pizzas/margherita.jpg"
+        price="10"
+      />
+    </main>
+  );
+}
+function Pizza(props) {
+  console.log(props);
+  return (
+    <div>
+      <img src={props.photoName} alt={props.name} />
+      <h3>{props.name} </h3>
+      <p>props.ingredient</p>
     </div>
   );
 }
@@ -86,7 +103,9 @@ function Footer() {
   //else alert("We're closed");
 
   return (
-    <footer>{new Date().toLocaleTimeString()}. We're currently open!</footer>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}. We're currently open!
+    </footer>
   );
   //return React.createElement("footer", null, "We're currently open!");
 }
@@ -94,16 +113,6 @@ function Footer() {
 const Test = () => {
   return <h1>Test</h1>;
 };
-
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/margherita.jpg" alt="Pizza Margherita" />
-      <h3>Pizza Margherita</h3>
-      <p>Tomato and mozarella</p>
-    </div>
-  );
-}
 
 //React 18 version
 const root = ReactDOM.createRoot(document.getElementById("root"));
