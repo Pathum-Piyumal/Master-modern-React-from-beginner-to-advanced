@@ -74,9 +74,40 @@ function Menu() {
       <h2>Our menu</h2>
       <Pizza
         name="Pizza Margherita"
-        ingredient="Tomato and mozzarella"
+        ingredients="Tomato and mozzarella"
         photoName="pizzas/margherita.jpg"
         price="10"
+      />
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        photoName="pizzas/funghi.jpg"
+        price="12"
+      />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/spinaci.jpg"
+        price="12"
+      />
+
+      <Pizza
+        name="Focaccia"
+        ingredients="Bread with italian olive oil and rosemary"
+        price="6"
+        photoName="pizzas/focaccia.jpg"
+      />
+      <Pizza
+        name="Pizza Prosciutto"
+        ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
+        price="18"
+        photoName="pizzas/prosciutto.jpg"
+      />
+      <Pizza
+        name="Pizza Salamino"
+        ingredients="Tomato, mozarella, and pepperoni"
+        price="15"
+        photoName="pizzas/salamino.jpg"
       />
     </main>
   );
@@ -84,10 +115,13 @@ function Menu() {
 function Pizza(props) {
   console.log(props);
   return (
-    <div>
+    <div className="pizza">
       <img src={props.photoName} alt={props.name} />
-      <h3>{props.name} </h3>
-      <p>props.ingredient</p>
+      <div>
+        <h3>{props.name} </h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
     </div>
   );
 }
@@ -110,9 +144,9 @@ function Footer() {
   //return React.createElement("footer", null, "We're currently open!");
 }
 
-const Test = () => {
-  return <h1>Test</h1>;
-};
+// const Test = () => {
+//   return <h1>Test</h1>;
+// };
 
 //React 18 version
 const root = ReactDOM.createRoot(document.getElementById("root"));
